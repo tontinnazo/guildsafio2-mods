@@ -1,15 +1,15 @@
-# Guildsafio 2 · Añadir mods desde una carpeta
+# Guildsafio 2 - Launcher v12
 
-**[Subir un mod .jar](https://github.com/tontinnazo/guildsafio2-mods/upload/main/mods)** → arrastra el archivo → Commit changes en main.
+El launcher descarga desde GitHub todos los mods, packs de texturas y shaders. Verifica su contenido antes de jugar, actualiza lo necesario y retira archivos sobrantes con respaldo.
 
-El launcher lo descarga antes de jugar y lo coloca en mods de Minecraft.
+[Subir un mod .jar](https://github.com/tontinnazo/guildsafio2-mods/upload/main/mods) - arrastra el archivo y guarda con Commit changes en main. GitHub prepara la lista de descargas automaticamente.
 
-- [mods](mods): archivos .jar.
-- [resourcepacks](resourcepacks): texturas .zip.
-- [shaderpacks](shaderpacks): shaders .zip.
+Carpetas: [mods](mods), [resourcepacks](resourcepacks), [shaderpacks](shaderpacks).
 
-La instalación original viene dentro del launcher. GitHub se usa para los archivos que quieras añadir o actualizar. No necesitas crear Releases ni editar manifiestos.
+Los originales grandes aparecen como `Nombre.jar.download.json` o `Nombre.zip.download.json`: son enlaces al archivo almacenado en GitHub. Puedes borrar el enlace para retirar ese archivo. Si subes un .jar/.zip con el mismo nombre, el sistema sustituye el enlace automaticamente. No dejes dos versiones del mismo mod.
 
-Para sustituir un mod original, sube un archivo con exactamente su nombre. Los originales grandes ya están incluidos. GitHub admite hasta 25 MiB por archivo al subir desde la web.
+La web permite subir hasta 25 MiB por archivo. Los originales grandes ya estan publicados. El paquete contiene 43 mods, tres packs de texturas validos y un shader; los packs y shader quedan seleccionados inicialmente.
 
-[Instrucciones completas](LEEME.md)
+El instalador v12 contiene Minecraft, Java, bibliotecas y configuracion, sin esos mods/packs/shaders. La pantalla completa conserva el comportamiento original.
+
+[Instrucciones completas](LEEME.md).

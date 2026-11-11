@@ -1,35 +1,21 @@
-# Guildsafio 2 · Instalar una vez y añadir mods desde una carpeta
+GUILDSAFIO 2 - LAUNCHER V12
 
-## Para ti
+Cierra Minecraft y el launcher anterior. Ejecuta GUILDSAFIO-2-Launcher-v12-SYNC.exe.
+La pantalla completa conserva el comportamiento original. No se aplico la reparacion de ventana solicitada inicialmente.
 
-1. Abre https://github.com/tontinnazo/guildsafio2-mods/upload/main/mods
-2. Arrastra el archivo .jar.
-3. Pulsa Commit changes, guardando en main.
+El instalador incluye Java, Minecraft y sus bibliotecas/configuraciones, sin mods, packs de texturas ni shaders. Estos se descargan desde GitHub: 43 mods, tres packs de texturas validos y un shader. Los packs y el shader quedan seleccionados inicialmente.
 
-Antes de jugar, el launcher revisa esa carpeta, descarga los archivos nuevos o modificados y los coloca en mods de Minecraft. No necesitas crear una Release ni generar un manifiesto.
+Al abrirse y antes de jugar, verifica el paquete de GitHub, descarga archivos nuevos/modificados y retira archivos sobrantes de mods, resourcepacks y shaderpacks. Los retirados quedan en carpetas de respaldo. Las descargas usan hasta cuatro archivos en paralelo y reutilizan archivos verificados si se interrumpe una actualizacion.
 
-Para texturas usa resourcepacks y sube un .zip. Para shaders usa shaderpacks y sube un .zip. Solo se leen archivos directamente dentro de esas carpetas.
+Para subir mods:
+https://github.com/tontinnazo/guildsafio2-mods/upload/main/mods
+Arrastra el .jar y guarda con Commit changes en main. GitHub actualiza automaticamente la lista de descargas. Espera a que termine la accion Actualizar archivos del launcher.
 
-La página web de GitHub admite hasta 25 MiB por archivo. Esa limitación es de GitHub. Los mods grandes originales ya vienen dentro del instalador.
+Para texturas usa resourcepacks; para shaders usa shaderpacks.
+Los originales grandes aparecen como Nombre.jar.download.json o Nombre.zip.download.json. Son enlaces a archivos ya almacenados en GitHub. Borrar ese enlace retira el archivo del paquete. Subir un .jar/.zip con el mismo nombre sustituye automaticamente el enlace. Para cambiar de nombre o version, retira tambien el archivo anterior: no dejes dos versiones del mismo mod.
 
-## Para los jugadores
+La web de GitHub permite hasta 25 MiB por archivo. Los originales grandes ya estan subidos y disponibles sin iniciar sesion.
 
-Cierra Minecraft y el launcher anterior. Instala GUILDSAFIO-2-Launcher-v11-AUTOMATICO.exe. Esta versión completa incluye los recursos originales y pesa aproximadamente 2,35 GB, como el instalador original.
+Codigo-fuente.zip no se distribuye porque contiene codigo, no un pack de texturas valido.
 
-No descarga toda la instalación desde GitHub. Se instala con los archivos incluidos y luego comprueba tus carpetas en GitHub antes de jugar. Se necesita Internet para esa comprobación.
-
-Si instalaste la versión pequeña anterior de 222 MB, instala esta versión completa una vez. La anterior dependía de una publicación inicial de recursos que ya no se utiliza.
-
-## Archivos originales y actualizaciones
-
-Se incluyen los 43 mods, cuatro ZIP de texturas y un shader originales. Para reemplazar uno sube a su carpeta de GitHub un archivo con exactamente el mismo nombre. Otro nombre se trata como un archivo adicional: no mantengas dos versiones del mismo mod.
-
-Eliminar del repositorio un archivo añadido lo retira del jugador y lo deja en respaldo. Eliminar una sustitución de un original restaura la versión incluida en el instalador.
-
-Los originales que falten o estén dañados se restauran desde el instalador local. Los archivos nuevos o modificados de GitHub se descargan y verifican antes de iniciar el juego.
-
-No se sincronizan mundos, perfiles, configuraciones ni packs descomprimidos. No abras la misma instancia desde otro launcher mientras se actualiza.
-
-Los respaldos quedan dentro de %LOCALAPPDATA%\Guildsafio2Launcher\data\Forge 1.20.1, en mod-backups, resourcepacks-backups y shaderpacks-backups.
-
-Repositorio: https://github.com/tontinnazo/guildsafio2-mods
+Verificado: paquete remoto publicado y accesible; instalacion base sin los tres tipos de contenido; descarga real de los 47 archivos; packs y shader seleccionados; comprobacion posterior sin repetir descargas; retirada de un archivo extra; inicio real de Minecraft. No se corrigio el recorte al salir de pantalla completa, por solicitud del usuario.
