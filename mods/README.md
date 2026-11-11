@@ -1,5 +1,8 @@
-# mods
+# Mods
 
-Pulsa Add file > Upload files, sube tu archivo .jar y guarda con Commit changes en main. El launcher lo descarga antes de jugar y lo coloca en mods de Minecraft.
+Esta carpeta esta vacia para que puedas añadir tus propios mods.
 
-Los originales se conservan como paquete base. Para sustituir uno usa exactamente su nombre original. Archivos de hasta 25 MiB desde esta pagina.
+Pulsa Add file > Upload files, arrastra los .jar y guarda con Commit changes en main.
+GitHub actualiza automaticamente la lista que consulta el launcher. Espera a que termine la accion Actualizar archivos del launcher.
+
+Si retiras un archivo de esta carpeta, el launcher lo retira de los clientes durante la siguiente sincronizacion. Los shaders necesitan que añadas sus mods correspondientes.
