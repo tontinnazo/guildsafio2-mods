@@ -12,15 +12,20 @@ function validateManifest(manifest, repository, extension = 'jar') {
     const key = file.name.toLowerCase();
     if (names.has(key)) throw new Error('Hay mods duplicados en la publicación.');
     names.add(key);
-    if (!/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isSafeInteger(file.size) || file.size < 1 || file.size > 2 * 1024 ** 3) throw new Error('Tamaño o firma de mod inválidos.');
+    const sha256 = /^[a-f0-9]{64}$/.test(file.sha256 || '');
+    const blobSha1 = /^[a-f0-9]{40}$/.test(file.blobSha1 || '');
+    if (sha256 === blobSha1 || !Number.isSafeInteger(file.size) || file.size < 1 || file.size > 2 * 1024 ** 3) throw new Error('Tamaño o firma de mod inválidos.');
     const url = new URL(file.url);
-    if (url.origin !== 'https://github.com' || !url.pathname.startsWith(`/${repository}/releases/download/`) || url.username || url.password || url.search || url.hash) throw new Error('El mod no pertenece a las Releases configuradas.');
+    const releaseURL = sha256 && url.origin === 'https://github.com' && url.pathname.startsWith(`/${repository}/releases/download/`) && !url.search;
+    const repositoryURL = blobSha1 && url.origin === 'https://raw.githubusercontent.com' && url.pathname.startsWith(`/${repository}/main/`) && url.search === '?v=' + file.blobSha1;
+    if ((!releaseURL && !repositoryURL) || url.username || url.password || url.hash) throw new Error('El archivo no pertenece al repositorio configurado.');
   }
   return manifest;
 }
 
-async function digest(filename) {
-  const hash = crypto.createHash('sha256');
+async function digest(filename, expected) {
+  const hash = crypto.createHash(expected.blobSha1 ? 'sha1' : 'sha256');
+  if (expected.blobSha1) hash.update('blob ' + expected.size + '\0');
   const handle = await fs.open(filename, 'r');
   try { for await (const chunk of handle.createReadStream()) hash.update(chunk); }
   finally { await handle.close(); }
@@ -48,7 +53,8 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     if (!response.ok || !response.body) throw new Error(`Descarga fallida (HTTP ${response.status}).`);
     const handle = await fs.open(file, 'wx');
     let size = 0;
-    const hash = crypto.createHash('sha256');
+    const hash = crypto.createHash(expected.blobSha1 ? 'sha1' : 'sha256');
+    if (expected.blobSha1) hash.update('blob ' + expected.size + '\0');
     try {
       for await (const chunk of response.body) {
         size += chunk.length;
@@ -57,7 +63,7 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
         await handle.writeFile(chunk);
       }
     } finally { await handle.close(); }
-    if (size !== expected.size || hash.digest('hex') !== expected.sha256) throw new Error('La descarga está incompleta o dañada: ' + expected.name);
+    if (size !== expected.size || hash.digest('hex') !== (expected.blobSha1 || expected.sha256)) throw new Error('La descarga está incompleta o dañada: ' + expected.name);
   }
   async function sync(progress) {
     if (!/^[a-zA-Z0-9-]+\/[a-zA-Z0-9_.-]+$/.test(repository || '')) throw new Error('Falta configurar el repositorio público de GitHub.');
@@ -83,7 +89,7 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     for (const file of manifest.files) {
       const filename = path.join(mods, file.name);
       const stat = await exists(filename) ? await fs.lstat(filename) : null;
-      if (!stat || !stat.isFile() || stat.size !== file.size || await digest(filename) !== file.sha256) changed.push(file.name);
+      if (!stat || !stat.isFile() || stat.size !== file.size || await digest(filename, file) !== (file.blobSha1 || file.sha256)) changed.push(file.name);
     }
     const wanted = new Set(manifest.files.map(file => file.name));
     const removed = current.filter(entry => managedFile(entry.name) && !wanted.has(entry.name));

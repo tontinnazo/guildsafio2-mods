@@ -1,13 +1,15 @@
-# Guildsafio 2 · Mods y texturas automaticos
+# Guildsafio 2 · Subir mods a una carpeta
 
-[Descargar el launcher v11](https://github.com/tontinnazo/guildsafio2-mods/releases/tag/launcher-v11)
+Abre la carpeta [mods](mods), pulsa Add file → Upload files, arrastra tu .jar y guarda con Commit changes en main. El launcher lo descarga antes de jugar y lo coloca en la carpeta mods de Minecraft.
 
-El launcher compara directamente los mods, packs de texturas y shaders con los archivos publicados en Releases antes de jugar. Descarga los que faltan o cambiaron y respalda los retirados.
+- [mods](mods): archivos .jar.
+- [resourcepacks](resourcepacks): packs de texturas .zip.
+- [shaderpacks](shaderpacks): shaders .zip.
 
-Puedes reemplazar, agregar o quitar archivos en la publicacion del paquete en GitHub. No necesitas generar un manifiesto. Los .jar son mods; los .zip son texturas. Los shaders usan el prefijo shader__ o una etiqueta shaderpacks/Nombre.zip.
+Los originales del launcher se conservan como paquete base: 43 mods, cuatro ZIP de texturas y un shader. Las carpetas del repositorio permiten añadir archivos y reemplazar originales usando exactamente el mismo nombre. No necesitas editar manifiestos.
 
-Para publicar un paquete nuevo, crea una Release en borrador con etiqueta pack-v12 (o cualquier pack-...), adjunta TODOS los mods y packs que deban tener los jugadores y publicala cuando termine de subir. La publicacion mas reciente con etiqueta pack- o mods- es el paquete activo. Subir archivos a Code no modifica el paquete.
+Un archivo nuevo en estas carpetas se descarga automáticamente. Si reemplazas su contenido conservando el nombre, se actualiza. Si retiras un archivo añadido, se retira del jugador y queda en respaldo. Si retiras una sustitución de un archivo original, se recupera la versión del paquete base.
 
-[Instrucciones completas](LEEME.md). Conserva la Release base-v11. Los jugadores existentes deben instalar v11 una vez.
+GitHub admite archivos de hasta 25 MiB por archivo desde su página web. Los originales grandes se descargan desde la base ya preparada. Para publicar archivos nuevos mayores puede usarse la herramienta opcional del paquete.
 
-Codigo de sincronizacion y pruebas en app/ y tools/. Comprobar con Node.js 20 o posterior: node --test tools/*.test.js.
+[Descargar launcher v11](https://github.com/tontinnazo/guildsafio2-mods/releases/tag/launcher-v11) · [Instrucciones completas](LEEME.md)

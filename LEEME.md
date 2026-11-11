@@ -1,42 +1,36 @@
-# Guildsafio 2 · Sincronización con GitHub
+# Guildsafio 2 · Carpetas de descarga automática
 
-El launcher v11 comprueba mods, packs de texturas y shaders al abrirse y antes de iniciar Minecraft. Compara el contenido por SHA-256 con los archivos de la publicación del paquete en GitHub: descarga los que faltan o cambiaron y retira los que ya no están publicados. Guarda respaldos de las carpetas anteriores. No inicia el juego si falla una descarga o no puede comprobar el paquete.
+## Subir un mod desde GitHub
 
-Se incluyen los 43 mods, los cuatro ZIP de resourcepacks y el shader ZIP que venían en el launcher original. Se conservan sus nombres dentro de la instancia, incluidos los caracteres especiales.
+1. Abre https://github.com/tontinnazo/guildsafio2-mods/tree/main/mods
+2. Pulsa Add file → Upload files.
+3. Arrastra tu archivo .jar.
+4. Guarda con Commit changes directamente en main.
 
-## Para los jugadores
+El launcher comprueba esa carpeta antes de jugar, descarga los archivos que falten o tengan otro contenido y los coloca dentro de mods en la instancia de Minecraft.
 
-Cierra Minecraft y el launcher v10. Ejecuta GUILDSAFIO-2-Launcher-v11-AUTOMATICO.exe. Se instala en tu carpeta de usuario y se crea un acceso directo. Se necesita Internet; no necesitas una cuenta de GitHub ni instalar Node.js.
+Para texturas usa resourcepacks y sube un .zip. Para shaders usa shaderpacks y sube un .zip. Solo se leen archivos directamente dentro de esas carpetas; los archivos README no se descargan al juego.
 
-La primera descarga incluye aproximadamente 1,19 GB de recursos base y 831 MB de mods. Los packs originales ya están en los recursos base, pero también se comprueban contra GitHub. Después solo se descargan los archivos que falten o tengan otro contenido.
+## Archivos originales
 
-Los jugadores con v10 deben instalar v11 una vez. Después reciben los cambios del paquete sin reinstalar.
+Se conserva como base todo lo que traía el launcher: 43 mods, cuatro ZIP de texturas y un shader. Los archivos de las carpetas del repositorio se agregan a esa base. Para reemplazar un original usa exactamente su mismo nombre; si subes otro nombre se considera un archivo adicional.
 
-## Cambiar archivos directamente en GitHub
+Eliminar un archivo añadido del repositorio lo retira de la carpeta activa del jugador. Eliminar la sustitución de un original restaura su versión base. Las versiones anteriores quedan en respaldo.
 
-Abre la publicación Mods Guildsafio 2 - v11 en Releases del repositorio. Ahí están los archivos activos del paquete. El launcher lee directamente los archivos publicados: no tienes que editar ni generar un manifiesto.
+## Límites de GitHub
 
-- Un archivo .jar es un mod.
-- Un archivo .zip es un pack de texturas.
-- Para un shader, usa un nombre shader__Nombre.zip o la etiqueta shaderpacks/Nombre.zip.
-- La etiqueta de un adjunto permite fijar su carpeta y nombre exactos: mods/Nombre.jar, resourcepacks/Nombre.zip o shaderpacks/Nombre.zip. Conserva la etiqueta al reemplazar un archivo existente. Los archivos originales ya llevan su etiqueta configurada.
+La página web de GitHub admite hasta 25 MiB por archivo. Los originales que superan ese tamaño se conservan en la base y se descargan automáticamente. Para archivos nuevos mayores puede usarse la herramienta opcional de publicación, que acepta archivos adjuntos de Releases.
 
-Para reemplazar un archivo, retira el adjunto anterior y sube el nuevo con el mismo nombre y etiqueta. Al terminar, los jugadores detectan el cambio aunque conserve el nombre. Si subes un mod nuevo se descargará; si quitas un mod o pack se retirará de la carpeta activa y quedará en respaldo.
+Si actualizas un mod cuyo nombre incluye la versión, conserva el nombre del archivo original al subir la sustitución. No dejes dos versiones del mismo mod.
 
-Para cambiar varios archivos juntos, crea una nueva Release en borrador con etiqueta que empiece por pack-, por ejemplo pack-v12. Sube la lista COMPLETA de mods, texturas y shaders y publícala cuando esté terminada. Así los jugadores no ven una actualización a medio preparar. El launcher usa la publicación más reciente con etiqueta pack- o mods-; ignora el instalador y los recursos base.
+## Instalar el launcher
 
-Los archivos deben estar adjuntos en Releases. Subirlos a la pestaña Code no cambia el paquete. No borres base-v11: contiene los recursos iniciales. No subas archivos privados a una publicación del paquete.
+Cierra Minecraft y el launcher v10 y ejecuta GUILDSAFIO-2-Launcher-v11-AUTOMATICO.exe. Los jugadores de v10 deben instalar v11 una vez. Se necesita Internet para comprobar los archivos; una descarga dañada o una comprobación fallida impide iniciar el juego hasta solucionarla.
 
-## Herramienta opcional desde tu PC
+La primera descarga incluye unos 1,19 GB de recursos base y 831 MB de mods. Los packs originales ya están incluidos en los recursos, pero también se verifican contra la base y sus sustituciones.
 
-Extrae Herramienta-publicar-mods.zip, abre Publicar-mods.cmd y selecciona la instancia completa que contiene mods, resourcepacks y shaderpacks. La herramienta sube sus .jar y .zip con las etiquetas correctas y publica solo al completar las subidas. La primera vez autoriza GitHub CLI.
-
-## Alcance y verificación
-
-Se sincronizan archivos .jar directamente dentro de mods, y .zip dentro de resourcepacks y shaderpacks. No se sincronizan mundos, perfiles, configuraciones, packs descomprimidos ni el propio launcher. No abras la misma instancia desde otro launcher mientras se actualiza.
+No se sincronizan mundos, perfiles, configuraciones ni packs descomprimidos. No abras la misma instancia desde otro launcher mientras se actualiza.
 
 Los respaldos quedan dentro de %LOCALAPPDATA%\Guildsafio2Launcher\data\Forge 1.20.1, en mod-backups, resourcepacks-backups y shaderpacks-backups.
 
-Pruebas: descarga inicial, comparación de contenido, reemplazo en la misma publicación, nombres Unicode, retirada de mods y packs, descargas corruptas, recuperación de interrupciones y rutas inválidas. No se ha probado una partida completa de Minecraft.
-
-Repositorio: https://github.com/tontinnazo/guildsafio2-mods
+Verificación: ocho pruebas del actualizador y comprobación SHA-256 de los 77 archivos extraídos del instalador. No se ha probado una partida completa de Minecraft.
