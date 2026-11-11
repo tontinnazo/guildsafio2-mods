@@ -68,3 +68,16 @@ test('repository folders add mods and textures and replace a base mod with Git b
   await updater.sync();
   assert.equal(await fs.readFile(path.join(root, 'mods/new.jar'), 'utf8'), 'NEW MOD');
 });
+test('bundled base uses only the repository folders, never Releases or remote base resources', async t => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'guildsafio-bundled-test-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const bytes = Buffer.from('included original mod');
+  const baseManifest = { files: [{ path: 'Forge 1.20.1/mods/original.jar', size: bytes.length, sha256: crypto.createHash('sha256').update(bytes).digest('hex') }] };
+  let localCopies = 0; const requests = [];
+  const updater = createPackUpdater({ instancePath: root, repository, baseManifest, baseFetch: async () => { localCopies++; return new Response(bytes); }, fetchImpl: async url => { requests.push(url); assert.ok(url.includes('/git/trees/main?recursive=1')); return new Response(JSON.stringify({ tree: [] })); } });
+  await updater.sync();
+  assert.equal(await fs.readFile(path.join(root, 'mods/original.jar'), 'utf8'), bytes.toString());
+  assert.equal(localCopies, 1);
+  await updater.sync(); assert.equal(localCopies, 1);
+  assert.equal(requests.length, 2);
+});

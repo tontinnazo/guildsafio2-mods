@@ -36,24 +36,29 @@ function mergeRepositoryFiles(catalog, tree, repository) {
   for (const directory of directories) validateManifest(catalog[directory], repository, directory === 'mods' ? 'jar' : 'zip');
   return catalog;
 }
-function createPackUpdater({ instancePath, repository, fetchImpl = globalThis.fetch }) {
+function createPackUpdater({ instancePath, repository, fetchImpl = globalThis.fetch, baseManifest, baseFetch }) {
   let pending;
   let catalog;
   // The existing verified downloader handles each managed directory, including rollback.
-  const updaters = directories.map(folderName => createModUpdater({ instancePath, repository, folderName, fetchImpl: (url, options) => url.endsWith('/mods-manifest.json') ? Promise.resolve(new Response(JSON.stringify(catalog[folderName]))) : fetchImpl(url, options) }));
+  const updaters = directories.map(folderName => createModUpdater({ instancePath, repository, folderName, fetchImpl: (url, options) => url.endsWith('/mods-manifest.json') ? Promise.resolve(new Response(JSON.stringify(catalog[folderName]))) : url.startsWith('guildsafio-local:') ? baseFetch(url) : fetchImpl(url, options) }));
   async function sync(progress) {
     progress({ percent: 0, message: 'Comprobando mods, texturas y shaders en GitHub…' });
+    let release;
+    if (baseManifest) {
+      catalog = require('./local-base').buildBaseCatalog(baseManifest);
+    } else {
     const response = await fetchImpl(`https://api.github.com/repos/${repository}/releases?per_page=100`, { headers: { Accept: 'application/vnd.github+json' }, signal: AbortSignal.timeout(30000), cache: 'no-store' });
     if (!response.ok) throw new Error(response.status === 403 || response.status === 429 ? 'GitHub ha limitado temporalmente las consultas. Espera unos minutos e intenta de nuevo.' : 'No se pudo consultar el paquete en GitHub. HTTP ' + response.status);
     const releases = await response.json();
     if (!Array.isArray(releases)) throw new Error('Respuesta de GitHub inválida.');
-    const release = releases.filter(item => !item.draft && !item.prerelease && (item.tag_name === 'mods-v11' || item.tag_name.startsWith('pack-') || item.tag_name.startsWith('mods-'))).sort((a,b) => Date.parse(b.published_at) - Date.parse(a.published_at))[0];
+    release = releases.filter(item => !item.draft && !item.prerelease && (item.tag_name === 'mods-v11' || item.tag_name.startsWith('pack-') || item.tag_name.startsWith('mods-'))).sort((a,b) => Date.parse(b.published_at) - Date.parse(a.published_at))[0];
     catalog = buildCatalog(release, repository);
+    }
     const treeResponse = await fetchImpl(`https://api.github.com/repos/${repository}/git/trees/main?recursive=1`, { headers: { Accept: 'application/vnd.github+json' }, signal: AbortSignal.timeout(30000), cache: 'no-store' });
     if (!treeResponse.ok) throw new Error('No se pudieron comprobar las carpetas del repositorio. HTTP ' + treeResponse.status);
     catalog = mergeRepositoryFiles(catalog, await treeResponse.json(), repository);
     for (let index = 0; index < updaters.length; index++) await updaters[index].sync(state => progress({ percent: Math.round((index * 100 + state.percent) / updaters.length), message: `${directories[index]}: ${state.message}` }));
-    progress({ percent: 100, message: 'Mods, texturas y shaders verificados · ' + release.tag_name });
+    progress({ percent: 100, message: 'Mods, texturas y shaders verificados · ' + (release?.tag_name || 'Carpetas GitHub') });
   }
   return { sync(progress = () => {}) { if (!pending) pending = sync(progress).finally(() => { pending = null; }); return pending; } };
 }

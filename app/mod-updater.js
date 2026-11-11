@@ -18,7 +18,8 @@ function validateManifest(manifest, repository, extension = 'jar') {
     const url = new URL(file.url);
     const releaseURL = sha256 && url.origin === 'https://github.com' && url.pathname.startsWith(`/${repository}/releases/download/`) && !url.search;
     const repositoryURL = blobSha1 && url.origin === 'https://raw.githubusercontent.com' && url.pathname.startsWith(`/${repository}/main/`) && url.search === '?v=' + file.blobSha1;
-    if ((!releaseURL && !repositoryURL) || url.username || url.password || url.hash) throw new Error('El archivo no pertenece al repositorio configurado.');
+    const localURL = sha256 && file.localBase === true && url.protocol === 'guildsafio-local:' && url.hostname === 'base' && !url.search;
+    if ((!releaseURL && !repositoryURL && !localURL) || url.username || url.password || url.hash) throw new Error('El archivo no pertenece al repositorio configurado.');
   }
   return manifest;
 }
