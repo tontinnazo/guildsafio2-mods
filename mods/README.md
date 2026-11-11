@@ -1,8 +1,5 @@
 # Mods
 
-Esta carpeta esta vacia para que puedas añadir tus propios mods.
+48 mods añadidos desde nuevos mods.rar. Los archivos .download.json enlazan al JAR almacenado en GitHub y el launcher lo descarga con su nombre original.
 
-Pulsa Add file > Upload files, arrastra los .jar y guarda con Commit changes en main.
-GitHub actualiza automaticamente la lista que consulta el launcher. Espera a que termine la accion Actualizar archivos del launcher.
-
-Si retiras un archivo de esta carpeta, el launcher lo retira de los clientes durante la siguiente sincronizacion. Los shaders necesitan que añadas sus mods correspondientes.
+Puedes añadir archivos .jar mediante Add file > Upload files y guardar en main. GitHub actualiza automáticamente la lista de descarga.
