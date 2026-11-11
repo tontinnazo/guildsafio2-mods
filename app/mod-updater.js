@@ -3,12 +3,12 @@ const fs = require('fs/promises');
 const path = require('path');
 const crypto = require('crypto');
 
-function validateManifest(manifest, repository) {
+function validateManifest(manifest, repository, extension = 'jar') {
   if (manifest.schemaVersion !== 1 || typeof manifest.version !== 'string' || !Array.isArray(manifest.files) || manifest.files.length > 2000) throw new Error('Lista de mods inválida.');
   if (!manifest.files.length && manifest.allowEmpty !== true) throw new Error('Lista vacía: publicación rechazada para proteger los mods.');
   const names = new Set();
   for (const file of manifest.files) {
-    if (typeof file.name !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9._+() -]*\.jar$/.test(file.name) || file.name.length > 180 || /^(con|prn|aux|nul|com[0-9]|lpt[0-9])\./i.test(file.name)) throw new Error('Nombre de mod inválido.');
+    if (typeof file.name !== 'string' || !file.name || /[<>:"/\\|?*\x00-\x1f]/.test(file.name) || /[. ]$/.test(file.name) || !file.name.toLowerCase().endsWith('.' + extension) || file.name.length > 180 || /^(con|prn|aux|nul|com[0-9]|lpt[0-9])\./i.test(file.name)) throw new Error('Nombre de archivo inválido.');
     const key = file.name.toLowerCase();
     if (names.has(key)) throw new Error('Hay mods duplicados en la publicación.');
     names.add(key);
@@ -29,11 +29,15 @@ async function digest(filename) {
 
 async function exists(filename) { try { await fs.lstat(filename); return true; } catch (e) { if (e.code === 'ENOENT') return false; throw e; } }
 
-function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fetch }) {
+function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fetch, folderName = 'mods' }) {
+  if (!['mods', 'resourcepacks', 'shaderpacks'].includes(folderName)) throw new Error('Carpeta no administrada.');
+  const extension = folderName === 'mods' ? 'jar' : 'zip';
+  const managedFile = name => name.toLowerCase().endsWith('.' + extension);
+  const backupFolder = folderName === 'mods' ? 'mod-backups' : folderName + '-backups';
   let pending;
-  const mods = path.join(instancePath, 'mods');
-  const previous = path.join(instancePath, '.mods-previous');
-  const stage = path.join(instancePath, '.mods-download');
+  const mods = path.join(instancePath, folderName);
+  const previous = path.join(instancePath, '.' + folderName + '-previous');
+  const stage = path.join(instancePath, '.' + folderName + '-download');
   async function assertDirectory(folder) {
     if (!await exists(folder)) return;
     const stat = await fs.lstat(folder);
@@ -63,8 +67,8 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     if (await exists(previous)) {
       if (!await exists(mods)) await fs.rename(previous, mods);
       else {
-        await fs.mkdir(path.join(instancePath, 'mod-backups'), { recursive: true });
-        await fs.rename(previous, path.join(instancePath, 'mod-backups', crypto.randomUUID()));
+        await fs.mkdir(path.join(instancePath, backupFolder), { recursive: true });
+        await fs.rename(previous, path.join(instancePath, backupFolder, crypto.randomUUID()));
       }
     }
     progress({ percent: 0, message: 'Buscando actualizaciones de mods en GitHub…' });
@@ -72,7 +76,7 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     if (!response.ok || !response.body) throw new Error(`No se pudo consultar la actualización (HTTP ${response.status}). Revisa tu conexión.`);
     const chunks = []; let length = 0;
     for await (const chunk of response.body) { length += chunk.length; if (length > 2 * 1024 ** 2) throw new Error('Lista de mods demasiado grande.'); chunks.push(Buffer.from(chunk)); }
-    const manifest = validateManifest(JSON.parse(Buffer.concat(chunks).toString('utf8')), repository);
+    const manifest = validateManifest(JSON.parse(Buffer.concat(chunks).toString('utf8')), repository, extension);
     const current = await exists(mods) ? await fs.readdir(mods, { withFileTypes: true }) : [];
     if (current.some(entry => entry.isSymbolicLink())) throw new Error('Hay enlaces dentro de la carpeta de mods.');
     const changed = [];
@@ -82,23 +86,23 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
       if (!stat || !stat.isFile() || stat.size !== file.size || await digest(filename) !== file.sha256) changed.push(file.name);
     }
     const wanted = new Set(manifest.files.map(file => file.name));
-    const removed = current.filter(entry => /\.jar$/i.test(entry.name) && !wanted.has(entry.name));
+    const removed = current.filter(entry => managedFile(entry.name) && !wanted.has(entry.name));
     if (!changed.length && !removed.length) { progress({ percent: 100, message: 'Mods actualizados · ' + manifest.version }); return; }
     await fs.rm(stage, { recursive: true, force: true });
     await fs.mkdir(stage);
     // Preserve non-JAR content. The previous full directory is retained as backup.
-    for (const entry of current.filter(entry => !/\.jar$/i.test(entry.name))) await fs.cp(path.join(mods, entry.name), path.join(stage, entry.name), { recursive: true, dereference: false });
+    for (const entry of current.filter(entry => !managedFile(entry.name))) await fs.cp(path.join(mods, entry.name), path.join(stage, entry.name), { recursive: true, dereference: false });
     for (let index = 0; index < manifest.files.length; index++) {
       const file = manifest.files[index];
       progress({ percent: Math.round(index / Math.max(1, manifest.files.length) * 95), message: `Preparando mods (${index + 1}/${manifest.files.length}): ${file.name}` });
       if (changed.includes(file.name)) await download(file.url, path.join(stage, file.name), file);
       else await fs.copyFile(path.join(mods, file.name), path.join(stage, file.name));
     }
-    await fs.mkdir(path.join(instancePath, 'mod-backups'), { recursive: true });
+    await fs.mkdir(path.join(instancePath, backupFolder), { recursive: true });
     if (await exists(mods)) await fs.rename(mods, previous);
     try { await fs.rename(stage, mods); }
     catch (e) { if (await exists(previous)) await fs.rename(previous, mods); throw e; }
-    if (await exists(previous)) await fs.rename(previous, path.join(instancePath, 'mod-backups', crypto.randomUUID()));
+    if (await exists(previous)) await fs.rename(previous, path.join(instancePath, backupFolder, crypto.randomUUID()));
     progress({ percent: 100, message: 'Mods actualizados · ' + manifest.version });
   }
   return { sync(progress = () => {}) { if (!pending) pending = sync(progress).finally(() => { pending = null; }); return pending; } };

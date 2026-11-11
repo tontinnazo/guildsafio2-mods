@@ -1,14 +1,13 @@
-# guildsafio2-mods
+# Guildsafio 2 · Mods y texturas automaticos
 
-Launcher y mods de Guildsafio 2 para Minecraft Forge 1.20.1.
+[Descargar el launcher v11](https://github.com/tontinnazo/guildsafio2-mods/releases/tag/launcher-v11)
 
-- [Descargar el launcher v11](https://github.com/tontinnazo/guildsafio2-mods/releases/tag/launcher-v11)
-- [Instrucciones para jugadores y para publicar mods](LEEME.md)
+El launcher compara directamente los mods, packs de texturas y shaders con los archivos publicados en Releases antes de jugar. Descarga los que faltan o cambiaron y respalda los retirados.
 
-El launcher descarga los recursos iniciales y sincroniza los mods al abrirse y antes de jugar. Los cambios se distribuyen en Releases. Modificar una carpeta local no publica los archivos: utiliza la herramienta Publicar mods.
+Puedes reemplazar, agregar o quitar archivos en la publicacion del paquete en GitHub. No necesitas generar un manifiesto. Los .jar son mods; los .zip son texturas. Los shaders usan el prefijo shader__ o una etiqueta shaderpacks/Nombre.zip.
 
-No borres la Release `base-v11` ni cambies archivos de versiones ya publicadas. Para actualizar los mods, crea una nueva publicación con la herramienta.
+Para publicar un paquete nuevo, crea una Release en borrador con etiqueta pack-v12 (o cualquier pack-...), adjunta TODOS los mods y packs que deban tener los jugadores y publicala cuando termine de subir. La publicacion mas reciente con etiqueta pack- o mods- es el paquete activo. Subir archivos a Code no modifica el paquete.
 
-Los mods anteriores se guardan en `mod-backups` dentro de la instancia del jugador. Esta versión sincroniza archivos `.jar` de mods; no sincroniza configuraciones, texturas, shaders ni mundos.
+[Instrucciones completas](LEEME.md). Conserva la Release base-v11. Los jugadores existentes deben instalar v11 una vez.
 
-El código de sincronización y sus pruebas están en `app/` y `tools/`. Verificación: `node --test tools/*.test.js` (Node.js 20 o posterior).
+Codigo de sincronizacion y pruebas en app/ y tools/. Comprobar con Node.js 20 o posterior: node --test tools/*.test.js.
