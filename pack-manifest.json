@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "2e1972dd6eeb7c84061089775c34363d1653061e",
+  "revision": "488fe964b9779a12cd263e1fa1acbdfbd397a687",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -17,7 +17,7 @@
         "name": "guildsafiodeathfix-1.1.1-forge-1.20.1.jar",
         "size": 15525,
         "sha256": "e3786a28a9832117cfc7b4eb088cf271db9ac1fadf4ffd59a98d90906b93fae3",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2e1972dd6eeb7c84061089775c34363d1653061e/mods/guildsafiodeathfix-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/488fe964b9779a12cd263e1fa1acbdfbd397a687/mods/guildsafiodeathfix-1.1.1-forge-1.20.1.jar"
       }
     ],
     "resourcepacks": [
@@ -25,7 +25,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2e1972dd6eeb7c84061089775c34363d1653061e/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/488fe964b9779a12cd263e1fa1acbdfbd397a687/resourcepacks/Guildsafium-1.20.1.zip"
       }
     ],
     "shaderpacks": []
