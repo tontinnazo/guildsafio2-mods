@@ -61,3 +61,19 @@ test('downloads in parallel with a maximum of four requests per managed folder',
   } }).sync();
   assert.equal(maximum, 4);
 });
+test('retry reuses already verified downloads instead of downloading the whole package again', async t => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'guildsafio-remote-retry-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const manifest = { schemaVersion: 2, revision: 'test', defaultsRevision: '1', defaults: {}, folders: { mods: [file('good.jar','good'),file('bad.jar','fixed')], resourcepacks: [], shaderpacks: [] } };
+  const calls = {}; let broken = true;
+  const updater = createRemotePackUpdater({instancePath:root,repository,fetchImpl:async url => {
+    if (url.includes('/pack-manifest.json?')) return new Response(JSON.stringify(manifest));
+    const name = url.split('/').pop(); calls[name]=(calls[name]||0)+1;
+    return new Response(name === 'good.jar' ? 'good' : broken ? 'wrong' : 'fixed');
+  }});
+  await assert.rejects(updater.sync(),/dañada/);
+  broken=false; await updater.sync();
+  assert.equal(calls['good.jar'],1);
+  assert.equal(calls['bad.jar'],2);
+  assert.equal(await fs.readFile(path.join(root,'mods/bad.jar'),'utf8'),'fixed');
+});

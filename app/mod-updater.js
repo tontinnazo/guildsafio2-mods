@@ -95,8 +95,14 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     const wanted = new Set(manifest.files.map(file => file.name));
     const removed = current.filter(entry => (exact || managedFile(entry.name)) && !wanted.has(entry.name));
     if (!changed.length && !removed.length) { progress({ percent: 100, message: 'Mods actualizados · ' + manifest.version }); return; }
-    await fs.rm(stage, { recursive: true, force: true });
-    await fs.mkdir(stage);
+    await fs.mkdir(stage, { recursive: true });
+    const allowedStage = new Set([...wanted, ...(!exact ? current.filter(entry => !managedFile(entry.name)).map(entry => entry.name) : [])]);
+    async function removeStaged(name) {
+      const target = path.resolve(stage, name);
+      if (path.dirname(target) !== path.resolve(stage)) throw new Error('Ruta temporal inválida.');
+      await fs.rm(target, { recursive: true, force: true });
+    }
+    for (const entry of await fs.readdir(stage, { withFileTypes: true })) if (!allowedStage.has(entry.name)) await removeStaged(entry.name);
     // Preserve non-JAR content. The previous full directory is retained as backup.
     if (!exact) for (const entry of current.filter(entry => !managedFile(entry.name))) await fs.cp(path.join(mods, entry.name), path.join(stage, entry.name), { recursive: true, dereference: false });
     let nextIndex = 0; let completed = 0;
@@ -105,8 +111,14 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
       const index = nextIndex++;
       const file = manifest.files[index];
       progress({ percent: Math.round(completed / Math.max(1, manifest.files.length) * 95), message: `Preparando archivos (${completed}/${manifest.files.length}): ${file.name}` });
-      if (changed.includes(file.name)) await download(file.url, path.join(stage, file.name), file);
-      else await fs.copyFile(path.join(mods, file.name), path.join(stage, file.name));
+      const destination = path.join(stage, file.name);
+      const staged = await exists(destination) ? await fs.lstat(destination) : null;
+      const valid = staged && staged.isFile() && !staged.isSymbolicLink() && staged.size === file.size && await digest(destination, file) === (file.blobSha1 || file.sha256);
+      if (!valid) {
+        if (staged) await removeStaged(file.name);
+        if (changed.includes(file.name)) await download(file.url, destination, file);
+        else await fs.copyFile(path.join(mods, file.name), destination);
+      }
       completed++;
       }
     }
