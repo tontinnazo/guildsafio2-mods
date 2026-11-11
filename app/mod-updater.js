@@ -17,7 +17,7 @@ function validateManifest(manifest, repository, extension = 'jar') {
     if (sha256 === blobSha1 || !Number.isSafeInteger(file.size) || file.size < 1 || file.size > 2 * 1024 ** 3) throw new Error('Tamaño o firma de mod inválidos.');
     const url = new URL(file.url);
     const releaseURL = sha256 && url.origin === 'https://github.com' && url.pathname.startsWith(`/${repository}/releases/download/`) && !url.search;
-    const repositoryURL = blobSha1 && url.origin === 'https://raw.githubusercontent.com' && url.pathname.startsWith(`/${repository}/main/`) && url.search === '?v=' + file.blobSha1;
+    const repositoryURL = url.origin === 'https://raw.githubusercontent.com' && (blobSha1 && url.pathname.startsWith(`/${repository}/main/`) && url.search === '?v=' + file.blobSha1 || sha256 && new RegExp('^/' + repository.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '/[a-f0-9]{40}/').test(url.pathname) && !url.search);
     const localURL = sha256 && file.localBase === true && url.protocol === 'guildsafio-local:' && url.hostname === 'base' && !url.search;
     if ((!releaseURL && !repositoryURL && !localURL) || url.username || url.password || url.hash) throw new Error('El archivo no pertenece al repositorio configurado.');
   }
@@ -35,7 +35,7 @@ async function digest(filename, expected) {
 
 async function exists(filename) { try { await fs.lstat(filename); return true; } catch (e) { if (e.code === 'ENOENT') return false; throw e; } }
 
-function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fetch, folderName = 'mods' }) {
+function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fetch, folderName = 'mods', exact = false, concurrency = 4 }) {
   if (!['mods', 'resourcepacks', 'shaderpacks'].includes(folderName)) throw new Error('Carpeta no administrada.');
   const extension = folderName === 'mods' ? 'jar' : 'zip';
   const managedFile = name => name.toLowerCase().endsWith('.' + extension);
@@ -50,7 +50,7 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
     if (!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('La carpeta de mods no puede ser un enlace.');
   }
   async function download(url, file, expected) {
-    const response = await fetchImpl(url, { signal: AbortSignal.timeout(10 * 60 * 1000) });
+    const response = await fetchImpl(url, { signal: AbortSignal.timeout(60 * 60 * 1000) });
     if (!response.ok || !response.body) throw new Error(`Descarga fallida (HTTP ${response.status}).`);
     const handle = await fs.open(file, 'wx');
     let size = 0;
@@ -93,18 +93,26 @@ function createModUpdater({ instancePath, repository, fetchImpl = globalThis.fet
       if (!stat || !stat.isFile() || stat.size !== file.size || await digest(filename, file) !== (file.blobSha1 || file.sha256)) changed.push(file.name);
     }
     const wanted = new Set(manifest.files.map(file => file.name));
-    const removed = current.filter(entry => managedFile(entry.name) && !wanted.has(entry.name));
+    const removed = current.filter(entry => (exact || managedFile(entry.name)) && !wanted.has(entry.name));
     if (!changed.length && !removed.length) { progress({ percent: 100, message: 'Mods actualizados · ' + manifest.version }); return; }
     await fs.rm(stage, { recursive: true, force: true });
     await fs.mkdir(stage);
     // Preserve non-JAR content. The previous full directory is retained as backup.
-    for (const entry of current.filter(entry => !managedFile(entry.name))) await fs.cp(path.join(mods, entry.name), path.join(stage, entry.name), { recursive: true, dereference: false });
-    for (let index = 0; index < manifest.files.length; index++) {
+    if (!exact) for (const entry of current.filter(entry => !managedFile(entry.name))) await fs.cp(path.join(mods, entry.name), path.join(stage, entry.name), { recursive: true, dereference: false });
+    let nextIndex = 0; let completed = 0;
+    async function worker() {
+      while (nextIndex < manifest.files.length) {
+      const index = nextIndex++;
       const file = manifest.files[index];
-      progress({ percent: Math.round(index / Math.max(1, manifest.files.length) * 95), message: `Preparando mods (${index + 1}/${manifest.files.length}): ${file.name}` });
+      progress({ percent: Math.round(completed / Math.max(1, manifest.files.length) * 95), message: `Preparando archivos (${completed}/${manifest.files.length}): ${file.name}` });
       if (changed.includes(file.name)) await download(file.url, path.join(stage, file.name), file);
       else await fs.copyFile(path.join(mods, file.name), path.join(stage, file.name));
+      completed++;
+      }
     }
+    const results = await Promise.allSettled(Array.from({ length: Math.min(concurrency, manifest.files.length) }, worker));
+    const failure = results.find(result => result.status === 'rejected');
+    if (failure) throw failure.reason;
     await fs.mkdir(path.join(instancePath, backupFolder), { recursive: true });
     if (await exists(mods)) await fs.rename(mods, previous);
     try { await fs.rename(stage, mods); }
