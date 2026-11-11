@@ -1,0 +1,27 @@
+'use strict';
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const crypto = require('crypto');
+const { buildIndex } = require('./build-pack-index');
+test('folder references and uploaded files build one authoritative index; real upload replaces its reference', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'guildsafio-index-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  for (const folder of ['mods','resourcepacks','shaderpacks']) fs.mkdirSync(path.join(root, folder));
+  fs.writeFileSync(path.join(root, 'pack-defaults.json'), JSON.stringify({ resourcePacks: [], shaderPack: '' }));
+  const ref = { name: 'a.jar', size: 3, sha256: crypto.createHash('sha256').update('old').digest('hex'), url: 'https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/a.jar' };
+  const referenceFile = path.join(root, 'mods/a.jar.download.json');
+  fs.writeFileSync(referenceFile, JSON.stringify(ref));
+  const revision = 'a'.repeat(40);
+  assert.equal(buildIndex(root, revision, 'tontinnazo/guildsafio2-mods').folders.mods[0].sha256, ref.sha256);
+  fs.writeFileSync(path.join(root, 'mods/a.jar'), 'new');
+  const result = buildIndex(root, revision, 'tontinnazo/guildsafio2-mods', true);
+  assert.equal(result.folders.mods.length, 1);
+  assert.equal(result.folders.mods[0].sha256, crypto.createHash('sha256').update('new').digest('hex'));
+  assert.match(result.folders.mods[0].url, new RegExp('/' + revision + '/mods/a.jar$'));
+  assert.equal(fs.existsSync(referenceFile), false);
+  fs.unlinkSync(path.join(root, 'mods/a.jar'));
+  assert.deepEqual(buildIndex(root, revision, 'tontinnazo/guildsafio2-mods').folders.mods, []);
+});
