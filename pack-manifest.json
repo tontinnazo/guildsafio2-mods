@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "905b0a3f972bd228246b70d76b08b96abf3baccf",
+  "revision": "35661d1e0a2529cb8bb6887467af1f10e153c3cd",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -12,7 +12,296 @@
   },
   "defaultsRevision": "a406327480cefdf799e4f423a785f301a6ba27b3d39eb97be1ad054906e6c9ec",
   "folders": {
-    "mods": [],
+    "mods": [
+      {
+        "name": "AI-Improvements-1.20-0.5.2.jar",
+        "size": 29553,
+        "sha256": "575a4a8e00f982c064d54bb3e73e5cda2d14414de054a471a3daf3f58bdf560a",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/575a4a8e00f982c064d54bb3e73e5cda2d14414de054a471a3daf3f58bdf560a.jar"
+      },
+      {
+        "name": "architectury-9.2.14-forge.jar",
+        "size": 580602,
+        "sha256": "218b471d0b8a1f6cda14cfc1beb9eeb0df54304500acc6c5613d9b88ec65d9af",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__architectury-9.2.14-forge.jar"
+      },
+      {
+        "name": "AuthMeLoginFreeze-1.0.0.jar",
+        "size": 5473,
+        "sha256": "3f035f5cab48fce2e47cde57879ff22c1f1437cc5f9deaf40f13e3dc01907ef1",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/3f035f5cab48fce2e47cde57879ff22c1f1437cc5f9deaf40f13e3dc01907ef1.jar"
+      },
+      {
+        "name": "balm-forge-1.20.1-7.3.44.jar",
+        "size": 561741,
+        "sha256": "ad11d968770bb1ce73377626b6f1dcd4ae6f8be1ef6f37cee9b872b8176aebd3",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__balm-forge-1.20.1-7.3.44.jar"
+      },
+      {
+        "name": "block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+        "size": 23963009,
+        "sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__block_factorys_bosses-2.1.2-forge-1.20.1.jar"
+      },
+      {
+        "name": "bosses-rise-panel-1.20.1-1.19.0-roleplayer-op-exento.jar",
+        "size": 3738940,
+        "sha256": "2106169f53c1b5b01519e6929bedc3516f615673159f9591c1a3362c15bbdd66",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__bosses-rise-panel-1.20.1-1.19.0-roleplayer-op-exento.jar"
+      },
+      {
+        "name": "Chunky-1.3.146.jar",
+        "size": 341451,
+        "sha256": "996a3c9b53e6c0e0850fb9e78d3546d2c37a1b789ddaf529b17e4fe62ab23141",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__Chunky-1.3.146.jar"
+      },
+      {
+        "name": "collective-1.20.1-8.53.jar",
+        "size": 758724,
+        "sha256": "c95e78743f2bc5c7aa12b7ad2fb037d48fbd7bb959afd5e628257d7f39934abc",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__collective-1.20.1-8.53.jar"
+      },
+      {
+        "name": "CreativeCore_FORGE_v2.12.40_mc1.20.1.jar",
+        "size": 1144290,
+        "sha256": "936de62489c0d6fbe74202486cbe2b191b8629b02bab1d480acfdb03690f33f4",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__CreativeCore_FORGE_v2.12.40_mc1.20.1.jar"
+      },
+      {
+        "name": "CustomPlayerModels-1.20-0.6.27a.jar",
+        "size": 2805930,
+        "sha256": "f4964fb5b008eea1401853c6ba19a623b5fd6f10e3e14c77d686d999a0bb7c42",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__CustomPlayerModels-1.20-0.6.27a.jar"
+      },
+      {
+        "name": "dedsafio3-0.0.9-guildosafio.jar",
+        "size": 7337956,
+        "sha256": "e8c6228c2a70fc9fabe2856dbeddcb2ed0df159b22c3f57aa914d852aa893f57",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/e8c6228c2a70fc9fabe2856dbeddcb2ed0df159b22c3f57aa914d852aa893f57.jar"
+      },
+      {
+        "name": "DedsafioImitationMod-Glebanoide-Limbo-Forge-47.4.20.jar",
+        "size": 315828572,
+        "sha256": "c7c27dcb7111a8005c1a8baa16f7617758f377d898d0212a6550a776920c7ae6",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/c7c27dcb7111a8005c1a8baa16f7617758f377d898d0212a6550a776920c7ae6.jar"
+      },
+      {
+        "name": "easy_npc_bundle-forge-1.20.1-7.15.0.jar",
+        "size": 25442,
+        "sha256": "46e180f189888c9f2c4a4cd5ee6f9e43d480e1ac55d17772d7e888a849330eaf",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/46e180f189888c9f2c4a4cd5ee6f9e43d480e1ac55d17772d7e888a849330eaf.jar"
+      },
+      {
+        "name": "easy_npc_config_ui-forge-1.20.1-7.15.0.jar",
+        "size": 1157477,
+        "sha256": "6afdac8d2f87148cbeec26e6aa491b024f030542ecb6045f36929ea3be0409a7",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__easy_npc_config_ui-forge-1.20.1-7.15.0.jar"
+      },
+      {
+        "name": "easy_npc-forge-1.20.1-7.15.0 (1).jar",
+        "size": 3125758,
+        "sha256": "d2fde98be5479e321e8f83369b8490c65b5db97fcacf660e5c8ca63726fdc740",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/d2fde98be5479e321e8f83369b8490c65b5db97fcacf660e5c8ca63726fdc740.jar"
+      },
+      {
+        "name": "embeddium-0.3.31+mc1.20.1.jar",
+        "size": 1320675,
+        "sha256": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__embeddium-0.3.31%2Bmc1.20.1.jar"
+      },
+      {
+        "name": "fabric-api-0.92.6+1.11.14+1.20.1 (1).jar",
+        "size": 3065813,
+        "sha256": "9b140af437581d32e5ee17d20f8fe882000e6a34cba85c152ae5bccc9570cc03",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/9b140af437581d32e5ee17d20f8fe882000e6a34cba85c152ae5bccc9570cc03.jar"
+      },
+      {
+        "name": "fdm-26.9-forge-1.20.1.jar",
+        "size": 1972281,
+        "sha256": "1277adeabcd84c727c8654753b56e3a2d39127854f154de00cf6d9b94546617b",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__fdm-26.9-forge-1.20.1.jar"
+      },
+      {
+        "name": "ferritecore-6.0.1-forge.jar",
+        "size": 123034,
+        "sha256": "9c2c9396a49e796d88497758caa4637d2bcbb433c318e2dd9cebcffbaf0f6c54",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/9c2c9396a49e796d88497758caa4637d2bcbb433c318e2dd9cebcffbaf0f6c54.jar"
+      },
+      {
+        "name": "framework-forge-1.20.1-0.8.0.jar",
+        "size": 383868,
+        "sha256": "37c267f46d8b8dfa81bae8c9fa9fa6467e456cadecae10722ee91b43437f25a0",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__framework-forge-1.20.1-0.8.0.jar"
+      },
+      {
+        "name": "geckolib-forge-1.20.1-4.8.4.jar",
+        "size": 1038209,
+        "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__geckolib-forge-1.20.1-4.8.4.jar"
+      },
+      {
+        "name": "guildsafio-catalogo-0.1.0.jar",
+        "size": 46605,
+        "sha256": "92c690cdec1cf3d22223fbf058755d457acf1894b487b5429138ceb75b3e4821",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/92c690cdec1cf3d22223fbf058755d457acf1894b487b5429138ceb75b3e4821.jar"
+      },
+      {
+        "name": "GUILDSAFIO-FAN-sin-totems-dedita-roja-1000.jar",
+        "size": 108354215,
+        "sha256": "b48df032e89746ed9010eafafe806421aabdfd21a1b15939f2cf19d6f5fd6fd9",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/b48df032e89746ed9010eafafe806421aabdfd21a1b15939f2cf19d6f5fd6fd9.jar"
+      },
+      {
+        "name": "guildsafio-forgotten-forest-1.0.0-forge-1.20.1.jar",
+        "size": 230504,
+        "sha256": "3e18a7919f198ce40a333ebbbf63fe2e2de8c19498195cc564bc065e9d41d895",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/3e18a7919f198ce40a333ebbbf63fe2e2de8c19498195cc564bc065e9d41d895.jar"
+      },
+      {
+        "name": "GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar",
+        "size": 61354339,
+        "sha256": "750a44caefdcfc0bb0bd3ced98d283753f1889d232c27456aa66ea68ab5015e9",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/750a44caefdcfc0bb0bd3ced98d283753f1889d232c27456aa66ea68ab5015e9.jar"
+      },
+      {
+        "name": "GUILDSAFIO4-PlantArmor-1.0.1-Forge-1.20.1.jar",
+        "size": 34395,
+        "sha256": "fd9333f4b2b7c4ed03e67afc0ed63661520d602fbd432bc242d6b2ab561442cd",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/fd9333f4b2b7c4ed03e67afc0ed63661520d602fbd432bc242d6b2ab561442cd.jar"
+      },
+      {
+        "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
+        "size": 17725723,
+        "sha256": "9a53f77a90a8e7af5e579ade8688ae304f58b9ca5347e87b45ad48ab8ef9b42c",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/9a53f77a90a8e7af5e579ade8688ae304f58b9ca5347e87b45ad48ab8ef9b42c.jar"
+      },
+      {
+        "name": "guildsafiohermandades-1.3.8-forge-47.4.20.jar",
+        "size": 156973,
+        "sha256": "03ccbd02b819972a3f32c3fd0c62456a13954e640cb5288fb368511155ea3420",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/03ccbd02b819972a3f32c3fd0c62456a13954e640cb5288fb368511155ea3420.jar"
+      },
+      {
+        "name": "guildsafiojump-0.1.0-botas-guildsafium.jar",
+        "size": 289304,
+        "sha256": "3aaf4432aa977c8dcb2848352154035e1ffabc0e1f1fb5810f08277edebcfd6c",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/3aaf4432aa977c8dcb2848352154035e1ffabc0e1f1fb5810f08277edebcfd6c.jar"
+      },
+      {
+        "name": "guildsafiomenu.jar",
+        "size": 99429635,
+        "sha256": "1f88b0e74aeef8d4832ef9f36d52d852ca21de716a637bcb0901c5c0e6c1a9f8",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/1f88b0e74aeef8d4832ef9f36d52d852ca21de716a637bcb0901c5c0e6c1a9f8.jar"
+      },
+      {
+        "name": "immersive_paintings-0.6.13+1.20.1-forge.jar",
+        "size": 4856103,
+        "sha256": "069d5dffa4060d965899e607fad725c4d80a8086cef64f1d7563259b0a070633",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__immersive_paintings-0.6.13%2B1.20.1-forge.jar"
+      },
+      {
+        "name": "immersivemessages-forge-1.0.18-1.20.1.jar",
+        "size": 1462072,
+        "sha256": "ae135add526bfa94a92f05be11df045d1d808a84014262cd6d771bf92ff63643",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__immersivemessages-forge-1.0.18-1.20.1.jar"
+      },
+      {
+        "name": "mdm-3.0.3-forge-1.20.1.jar",
+        "size": 3031961,
+        "sha256": "79c4977d16aadf0e0fdd470b65a073c4e08dcf588c7c2b87c27821cd191453b6",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__mdm-3.0.3-forge-1.20.1.jar"
+      },
+      {
+        "name": "modernfix-forge-5.27.91+mc1.20.1.jar",
+        "size": 1012942,
+        "sha256": "b42fe87fd5ffa46f7db56c6cee01b08dea362baf4cc56a70db40d928773b5000",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/b42fe87fd5ffa46f7db56c6cee01b08dea362baf4cc56a70db40d928773b5000.jar"
+      },
+      {
+        "name": "MossyLib-1.6.0+1.20.1+forge.jar",
+        "size": 374176,
+        "sha256": "3ae64769b33b201b9756003bc32806866e6f37871d27b17c9e6f5eaa9d0d3a23",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__MossyLib-1.6.0%2B1.20.1%2Bforge.jar"
+      },
+      {
+        "name": "mychestlock-forge-1.0.1-beta.jar",
+        "size": 147177,
+        "sha256": "bddcc1a824c0dc6185bc9099f5df1a2e2e4904e436fcc1b3781799a6ddb8cfdb",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__mychestlock-forge-1.0.1-beta.jar"
+      },
+      {
+        "name": "naturallychargedcreepers-1.20.1-3.7.jar",
+        "size": 29298,
+        "sha256": "b4b1d5691bbc99199ef6218de2b755dd282d59363a893075a8517ee3e34c31b4",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__naturallychargedcreepers-1.20.1-3.7.jar"
+      },
+      {
+        "name": "oculus-mc1.20.1-1.8.0.jar",
+        "size": 2851119,
+        "sha256": "0945df0cba0f62b3901dd80c3268e5311b770ece78c78037a45db12ac0425fef",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__oculus-mc1.20.1-1.8.0.jar"
+      },
+      {
+        "name": "Pehkui-3.8.2+1.20.1-forge.jar",
+        "size": 671605,
+        "sha256": "54210f454c166f65a1bcbbfe4ea52e6f73e07844a793c7132f1af4076a0f42fc",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__Pehkui-3.8.2%2B1.20.1-forge.jar"
+      },
+      {
+        "name": "refurbished_furniture-forge-1.20.1-1.0.20.jar",
+        "size": 6689588,
+        "sha256": "480546202aa21fa07e6b1571f3e3263e5690e9804afb7c35984642bcf473bc6e",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__refurbished_furniture-forge-1.20.1-1.0.20.jar"
+      },
+      {
+        "name": "SilencioGlobal-ForgeBridge-1.2.0.jar",
+        "size": 8277,
+        "sha256": "00bfaf394a2d07c116f074797f348db1d79bc7c6b2542ffabd0fae20c1818a96",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/00bfaf394a2d07c116f074797f348db1d79bc7c6b2542ffabd0fae20c1818a96.jar"
+      },
+      {
+        "name": "trashslot-forge-1.20.1-15.1.5.jar",
+        "size": 117983,
+        "sha256": "7f038937dffeebc3885d347c47622d504a562da0bcce7873c50f2753db0a3746",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__trashslot-forge-1.20.1-15.1.5.jar"
+      },
+      {
+        "name": "txnilib-forge-1.0.24-1.20.1.jar",
+        "size": 3743339,
+        "sha256": "71ca69345ef763903213e0b0db3c9c07d2a090ad311d1de66c31798a813a9d0e",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__txnilib-forge-1.0.24-1.20.1.jar"
+      },
+      {
+        "name": "voicechat-forge-1.20.1-2.6.22.jar",
+        "size": 4923439,
+        "sha256": "f171e99fa99f007ef013af5306f6c490fe79a11be7e1b18940147d75ced045b9",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__voicechat-forge-1.20.1-2.6.22.jar"
+      },
+      {
+        "name": "waterframes-FORGE-mc1.20.1-v2.2.0-beta.6.jar",
+        "size": 254851,
+        "sha256": "f9f64428acaf1f0a06f8cd0f77e488f3ee9a1f06777f44ca35706f2bafcc3d8f",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/f9f64428acaf1f0a06f8cd0f77e488f3ee9a1f06777f44ca35706f2bafcc3d8f.jar"
+      },
+      {
+        "name": "watermedia_binaries-3.0.0-rc.3-forgefix.jar",
+        "size": 129669146,
+        "sha256": "ed572916d504380ebc253f61c8de49f85debb1a12f4b3876e859105cc7a0cb25",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/ed572916d504380ebc253f61c8de49f85debb1a12f4b3876e859105cc7a0cb25.jar"
+      },
+      {
+        "name": "watermedia_platform_extension-3.0.0-beta.7.jar",
+        "size": 248824,
+        "sha256": "69db30963f225772923a4abf72fd7b6d3ec6e033775ebb5a6f5d541d70c34475",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/69db30963f225772923a4abf72fd7b6d3ec6e033775ebb5a6f5d541d70c34475.jar"
+      },
+      {
+        "name": "watermedia-3.0.0.18.jar",
+        "size": 3156259,
+        "sha256": "352c3739218928e81d433c63aa1eddb67f0218e67f527874f6e9bec91bc50683",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/untagged-de7c93326bc80425efbd/352c3739218928e81d433c63aa1eddb67f0218e67f527874f6e9bec91bc50683.jar"
+      }
+    ],
     "resourcepacks": [
       {
         "name": "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -24,7 +313,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/905b0a3f972bd228246b70d76b08b96abf3baccf/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/35661d1e0a2529cb8bb6887467af1f10e153c3cd/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
