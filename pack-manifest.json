@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "60b076b00d903d7016d5c22f708c45d7a16dc357",
+  "revision": "539f837b3e3e8cd0668a05ba2b0cd336529b77be",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -80,10 +80,10 @@
         "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/e8c6228c2a70fc9fabe2856dbeddcb2ed0df159b22c3f57aa914d852aa893f57.jar"
       },
       {
-        "name": "DedsafioImitationMod-Glebanoide-Limbo-Forge-47.4.20-fix-espectador.jar",
-        "size": 315985298,
-        "sha256": "b59460863176f0eb654ba1e7f7861f4cd3ab650e74ea8bb43fcacd829e2be23e",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mod-limbo-fix-espectador-20261113/DedsafioImitationMod-Glebanoide-Limbo-Forge-47.4.20-fix-espectador.jar"
+        "name": "DedsafioImitationMod-Glebanoide-Limbo-Forge-47.4.20-fix-espectador-compat.jar",
+        "size": 315898176,
+        "sha256": "a1b3b6a7c1d571388237e5b023b9a67ae105875ad9767533de75cc276b5ac0e2",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mod-limbo-compat-misiones-20261113/DedsafioImitationMod-Glebanoide-Limbo-Forge-47.4.20-fix-espectador-compat.jar"
       },
       {
         "name": "easy_npc_bundle-forge-1.20.1-7.15.0.jar",
@@ -161,7 +161,7 @@
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/60b076b00d903d7016d5c22f708c45d7a16dc357/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/539f837b3e3e8cd0668a05ba2b0cd336529b77be/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
@@ -301,7 +301,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/60b076b00d903d7016d5c22f708c45d7a16dc357/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/539f837b3e3e8cd0668a05ba2b0cd336529b77be/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
