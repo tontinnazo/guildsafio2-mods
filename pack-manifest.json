@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "18bec3b7feb0abb0754ec056850ad98f8c09010a",
+  "revision": "1d64ba4a0a6450cef433d8b285386a89f8110a3d",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -146,10 +146,10 @@
         "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/92c690cdec1cf3d22223fbf058755d457acf1894b487b5429138ceb75b3e4821.jar"
       },
       {
-        "name": "GUILDSAFIO-FAN-sin-totems-dedita-roja-1000.jar",
-        "size": 108354215,
-        "sha256": "b48df032e89746ed9010eafafe806421aabdfd21a1b15939f2cf19d6f5fd6fd9",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/b48df032e89746ed9010eafafe806421aabdfd21a1b15939f2cf19d6f5fd6fd9.jar"
+        "name": "GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar",
+        "size": 109405103,
+        "sha256": "5a8fb67a8a8ae7895e590028fae97ce42f93a3ba1524dbae2dc811aeb62629c8",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mod-ded-misiones-20261113/GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar"
       },
       {
         "name": "guildsafio-forgotten-forest-1.0.0-forge-1.20.1.jar",
@@ -167,19 +167,13 @@
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/18bec3b7feb0abb0754ec056850ad98f8c09010a/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/1d64ba4a0a6450cef433d8b285386a89f8110a3d/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
         "size": 17725723,
         "sha256": "9a53f77a90a8e7af5e579ade8688ae304f58b9ca5347e87b45ad48ab8ef9b42c",
         "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/9a53f77a90a8e7af5e579ade8688ae304f58b9ca5347e87b45ad48ab8ef9b42c.jar"
-      },
-      {
-        "name": "guildsafiohermandades-1.3.8-forge-47.4.20.jar",
-        "size": 156973,
-        "sha256": "03ccbd02b819972a3f32c3fd0c62456a13954e640cb5288fb368511155ea3420",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/03ccbd02b819972a3f32c3fd0c62456a13954e640cb5288fb368511155ea3420.jar"
       },
       {
         "name": "guildsafiojump-0.1.0-botas-guildsafium.jar",
@@ -313,7 +307,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/18bec3b7feb0abb0754ec056850ad98f8c09010a/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/1d64ba4a0a6450cef433d8b285386a89f8110a3d/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
