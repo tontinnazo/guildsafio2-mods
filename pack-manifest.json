@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "1d64ba4a0a6450cef433d8b285386a89f8110a3d",
+  "revision": "60b076b00d903d7016d5c22f708c45d7a16dc357",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -140,12 +140,6 @@
         "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-v11/mods__geckolib-forge-1.20.1-4.8.4.jar"
       },
       {
-        "name": "guildsafio-catalogo-0.1.0.jar",
-        "size": 46605,
-        "sha256": "92c690cdec1cf3d22223fbf058755d457acf1894b487b5429138ceb75b3e4821",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/92c690cdec1cf3d22223fbf058755d457acf1894b487b5429138ceb75b3e4821.jar"
-      },
-      {
         "name": "GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar",
         "size": 109405103,
         "sha256": "5a8fb67a8a8ae7895e590028fae97ce42f93a3ba1524dbae2dc811aeb62629c8",
@@ -167,7 +161,7 @@
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/1d64ba4a0a6450cef433d8b285386a89f8110a3d/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/60b076b00d903d7016d5c22f708c45d7a16dc357/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
@@ -307,7 +301,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/1d64ba4a0a6450cef433d8b285386a89f8110a3d/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/60b076b00d903d7016d5c22f708c45d7a16dc357/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
