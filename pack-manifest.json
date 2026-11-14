@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "539f837b3e3e8cd0668a05ba2b0cd336529b77be",
+  "revision": "cbd471604d145457017dfadc9ff6add3f18d31a5",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -141,9 +141,9 @@
       },
       {
         "name": "GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar",
-        "size": 109405103,
-        "sha256": "5a8fb67a8a8ae7895e590028fae97ce42f93a3ba1524dbae2dc811aeb62629c8",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mod-ded-misiones-20261113/GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar"
+        "size": 109443252,
+        "sha256": "2ad2374f495f31f8792fe4ffdefdabb2e521111da9fe34b1d840a3c6e504c3f6",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-menu-ruleta-20261114/GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar"
       },
       {
         "name": "guildsafio-forgotten-forest-1.0.0-forge-1.20.1.jar",
@@ -153,15 +153,15 @@
       },
       {
         "name": "GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar",
-        "size": 61354339,
-        "sha256": "750a44caefdcfc0bb0bd3ced98d283753f1889d232c27456aa66ea68ab5015e9",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-usuario-20261111-523d01806c/750a44caefdcfc0bb0bd3ced98d283753f1889d232c27456aa66ea68ab5015e9.jar"
+        "size": 61430975,
+        "sha256": "79a0ec79782a2f9584d8daac49ffcc054de08886b82d53a43e6992a8b461001f",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/mods-menu-ruleta-20261114/GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar"
       },
       {
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/539f837b3e3e8cd0668a05ba2b0cd336529b77be/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/cbd471604d145457017dfadc9ff6add3f18d31a5/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
@@ -301,7 +301,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/539f837b3e3e8cd0668a05ba2b0cd336529b77be/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/cbd471604d145457017dfadc9ff6add3f18d31a5/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
