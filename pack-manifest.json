@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "573af0cf0f98abf327c244117848023ce670f773",
+  "revision": "2c4e01c19ef96a560405305d1b02b6c9d0696d3b",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -153,15 +153,15 @@
       },
       {
         "name": "GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar",
-        "size": 61432695,
-        "sha256": "1d90304a996fcd724733255a56d0ee05a0e58112b3a224e12677f0f3cb68efac",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/correcciones-misiones-ruleta-cofres-20261115/GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar"
+        "size": 61437542,
+        "sha256": "a688fa43d26e64591bb4a95f11993a1d41ed7263d81979e8aedc92faec9160a4",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/ruleta-magma-totems-final-20261115/GUILDSAFIO-Ruleta-1.1.0-serverfix.2-Forge-1.20.1.jar"
       },
       {
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/573af0cf0f98abf327c244117848023ce670f773/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2c4e01c19ef96a560405305d1b02b6c9d0696d3b/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
@@ -301,7 +301,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/573af0cf0f98abf327c244117848023ce670f773/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2c4e01c19ef96a560405305d1b02b6c9d0696d3b/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
