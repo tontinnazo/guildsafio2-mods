@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "2c4e01c19ef96a560405305d1b02b6c9d0696d3b",
+  "revision": "31da28dc79b142f69b20014c9025b8bcf2add339",
   "defaults": {
     "resourcePacks": [
       "1.20 - 26.3+ §cDedsafio 4  §f- §eiMhkx.zip",
@@ -141,9 +141,9 @@
       },
       {
         "name": "GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar",
-        "size": 109444749,
-        "sha256": "03a72f8bc97145d9dbc3e8f42d57d3fd241ff78afa8bd158ee23aa051b903f07",
-        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/correcciones-misiones-ruleta-cofres-20261115/GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar"
+        "size": 109463400,
+        "sha256": "5906e522f3996c7b96faccf8bdba48807226fda06c30f33083531170f041614a",
+        "url": "https://github.com/tontinnazo/guildsafio2-mods/releases/download/misiones-premios-deditas-20261115/GUILDSAFIO-DED-MISIONES-forge-1.20.1.jar"
       },
       {
         "name": "guildsafio-forgotten-forest-1.0.0-forge-1.20.1.jar",
@@ -161,7 +161,7 @@
         "name": "GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar",
         "size": 2305142,
         "sha256": "ed62672125de3bf3757cdc2deb660ea81d07e1a814551ad878a56002f99928c4",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2c4e01c19ef96a560405305d1b02b6c9d0696d3b/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/31da28dc79b142f69b20014c9025b8bcf2add339/mods/GUILDSAFIO-Waiting-1.1.1-forge-1.20.1.jar"
       },
       {
         "name": "guildsafiodeathfix-1.1.4-forge-1.20.1-solo-ruleta.jar",
@@ -301,7 +301,7 @@
         "name": "Guildsafium-1.20.1.zip",
         "size": 7755,
         "sha256": "f5715d0b3ea89eb6a80539e5634092743266f0c3cd68a2b5b8dccff3ad699764",
-        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/2c4e01c19ef96a560405305d1b02b6c9d0696d3b/resourcepacks/Guildsafium-1.20.1.zip"
+        "url": "https://raw.githubusercontent.com/tontinnazo/guildsafio2-mods/31da28dc79b142f69b20014c9025b8bcf2add339/resourcepacks/Guildsafium-1.20.1.zip"
       },
       {
         "name": "Revill_Pack.zip",
